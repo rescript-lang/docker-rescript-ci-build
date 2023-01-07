@@ -1,13 +1,15 @@
-FROM ocamlpro/ocaml:4.14
+FROM alpine:3.17
 LABEL org.opencontainers.image.authors="Christoph Knittel <ck@cca.io>"
 LABEL org.opencontainers.image.description="Alpine-based Docker image for building statically linked ReScript binaries."
 
-USER ocaml
-RUN opam switch create ocaml-system
-RUN opam update
-RUN opam install dune cppo=1.6.9 js_of_ocaml-compiler=4.0.0 ocamlformat=0.22.4 ounit2=2.2.6 reanalyze=2.23.0
+# - gcompat needed for ARM64, see https://github.com/actions/runner/issues/801#issuecomment-1374967227
+# - python3 needed for ninja build
+RUN apk add --no-cache bash gcc g++ git make opam python3 rsync gcompat
 
-USER root
+# We need to specify the OPAM dir explicitly as the GitHub Actions runner
+# will set a different home directory when running in a container.
+ENV OPAMROOT /root/.opam
 
-# Needed for ninja compilation
-RUN apk add g++ python3
+RUN opam init -y --compiler=4.14.0 --disable-sandboxing
+
+RUN opam install -y dune cppo=1.6.9 js_of_ocaml-compiler=4.0.0 ocamlformat=0.22.4 ounit2=2.2.6 reanalyze=2.23.0
