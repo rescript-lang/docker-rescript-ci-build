@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:3.19
 LABEL org.opencontainers.image.authors="Christoph Knittel <ck@cca.io>"
 LABEL org.opencontainers.image.description="Alpine-based Docker image for building statically linked ReScript binaries."
 
@@ -10,6 +10,6 @@ RUN apk add --no-cache bash gcc g++ git make opam python3 rsync gcompat
 # will set a different home directory when running in a container.
 ENV OPAMROOT /root/.opam
 
-RUN opam init -y --compiler=4.14.0 --disable-sandboxing
+RUN opam init -y --compiler=4.14.1 --disable-sandboxing
 
 RUN opam install -y dune cppo=1.6.9 js_of_ocaml-compiler=4.0.0 ocamlformat=0.22.4 ounit2=2.2.6 reanalyze=2.23.0
