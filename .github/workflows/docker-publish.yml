@@ -3,8 +3,8 @@ name: Docker
 on:
   push:
     branches: ["main"]
-    # Publish semver tags as releases.
-    tags: ["v*.*.*"]
+    # Publish tags as releases.
+    tags: ["alpine-*.*-ocaml-*.*.*-*"]
   pull_request:
     branches: ["main"]
 
