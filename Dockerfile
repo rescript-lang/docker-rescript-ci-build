@@ -12,4 +12,4 @@ ENV OPAMROOT /root/.opam
 
 RUN opam init -y --compiler=4.14.1 --disable-sandboxing
 
-RUN opam install -y dune cppo=1.6.9 js_of_ocaml-compiler=4.0.0 ocamlformat=0.22.4 ounit2=2.2.6 reanalyze=2.23.0
+RUN opam install -y dune cppo=1.6.9 js_of_ocaml-compiler=4.0.0 ocamlformat=0.26.1 ounit2=2.2.6 reanalyze=2.23.0
