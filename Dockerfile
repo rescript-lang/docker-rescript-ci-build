@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.20
 LABEL org.opencontainers.image.authors="Christoph Knittel <ck@cca.io>"
 LABEL org.opencontainers.image.description="Alpine-based Docker image for building statically linked ReScript binaries."
 
