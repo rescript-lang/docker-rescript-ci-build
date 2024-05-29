@@ -10,6 +10,6 @@ RUN apk add --no-cache bash gcc g++ git make opam python3 rsync gcompat
 # will set a different home directory when running in a container.
 ENV OPAMROOT /root/.opam
 
-RUN opam init -y --compiler=5.1.1 --disable-sandboxing
+RUN opam init -y --compiler=5.2.0 --disable-sandboxing
 
-RUN opam install -y dune cppo=1.6.9 js_of_ocaml-compiler=5.6.0 ocamlformat=0.26.1 ounit2=2.2.7
+RUN opam install -y dune cppo=1.6.9 js_of_ocaml-compiler=5.8.1 ocamlformat=0.26.2 ounit2=2.2.7
